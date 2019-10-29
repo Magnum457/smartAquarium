@@ -9,7 +9,7 @@ gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
 gpio.setup(17,gpio.OUT)
 gpio.setup(24,gpio.OUT)
-gpio.setup(22,gpio.OUT)
+gpio.setup(27,gpio.OUT)
 
 #Configure the pwm objects and initialize its value
 pwmBlue = gpio.PWM(24,100)
@@ -18,7 +18,7 @@ pwmBlue.start(0)
 pwmRed = gpio.PWM(17,100)
 pwmRed.start(100)
 
-pwmGreen = gpio.PWM(22,100)
+pwmGreen = gpio.PWM(27,100)
 pwmGreen.start(100)
  
 #Create the dutycycle variables

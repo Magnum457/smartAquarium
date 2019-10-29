@@ -13,7 +13,7 @@ servo_pin = 18
 #Ajuste estes valores para obter o intervalo completo do movimento do servo
 deg_0_pulse   = 0.5 
 deg_180_pulse = 2.5
-f = 60.0
+f = 100.0
 
 # Faca alguns calculos dos parametros da largura do pulso
 period = 1000/f
@@ -31,7 +31,7 @@ pwm.start(0)
 # calcula o ângulo a ser passado para o servo
 def set_angle(angle):
         duty = deg_0_duty + (angle/180.0)* duty_range
-        pwm.ChangeDutyCycle(duty)
+        pwm.ChangeDutyCycle(round(duty))
 
 # roda o loop
 try:
