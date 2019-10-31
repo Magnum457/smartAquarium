@@ -1,7 +1,6 @@
 # imports
 import RPi.GPIO as GPIO
 import time
-import res_mqtt as mqtt
 
 # configurando os GPIO
 def setup():
@@ -17,13 +16,11 @@ def loop_nivel():
             bot, estado = setup()
             if GPIO.input(bot)==0:
                     estado = 0
-                    print("Ligado")
-                    mqtt.send_message("teste/nivel", "Ligado")
+                    print "Ligado"
 
             elif GPIO.input(bot)==1:
                     estado = 1
-                    print("Desligado")
-                    mqtt.send_message("teste/nivel", "Desligado")
+                    print "Desligado"
             time.sleep(1)
                         
     finally:

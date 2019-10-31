@@ -1,6 +1,7 @@
 import os
 import glob
 import time
+import res_mqtt as mqtt
  
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
@@ -26,7 +27,10 @@ def read_temp():
         temp_c = float(temp_string) / 1000.0
         temp_f = temp_c * 9.0 / 5.0 + 32.0
         return temp_c, temp_f
-	
-while True:
-	print(read_temp())	
-	time.sleep(1)
+    
+def loop_temp():
+    while True:
+        temp_c, temp_f = read_temp()
+        print(temp_c)
+        mqtt.send_message("teste/jacquin", temp_c)
+        time.sleep(0.5)
