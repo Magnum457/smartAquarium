@@ -12,11 +12,11 @@ try:
     while 1:
         GPIO.output(pin,0) 
         print ("Baixo")
-        time.sleep(0.5)
+        time.sleep(5)
         GPIO.output(pin,1)
         print ("Alto")
-        time.sleep(0.5)
-		
+        time.sleep(5)
+        
 except KeyboardInterrupt:
   p.stop()
   GPIO.cleanup()

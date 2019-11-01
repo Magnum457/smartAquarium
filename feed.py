@@ -18,6 +18,8 @@ pulse_range = deg_180_pulse - deg_0_pulse
 duty_range = pulse_range * k
 ang = 50
 
+# usa o mapa de portas da placa
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(servo_pin,GPIO.OUT)
 pwm = GPIO.PWM(servo_pin,f)
 pwm.start(0)
@@ -28,11 +30,14 @@ def set_angle(angle):
     pwm.ChangeDutyCycle(round(duty,3))
         
 def loop_feed():
-    while True:
-        payload = mqtt.receive_message()
-        if (payload == 0):
-            set_angle(47)
-        elif (payload == 1):
-            set_angle(60)
-        elif (payload == 2):
-            set_angle(80)
+    payload = mqtt.receive_message("teste/feed")
+    if (payload == 0):
+        # set_angle(47)
+        print("angulo de 47")
+    elif (payload == 1):
+        # set_angle(60)
+        print("angulo de 60")
+    elif (payload == 2):
+        # set_angle(80)
+        print("angulo de 80")
+    GPIO.cleanup()

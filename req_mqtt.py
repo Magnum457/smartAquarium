@@ -7,9 +7,9 @@ def on_connect(client, userdata, flags, rc):
 
 # O callback quando uma PUBLISH message é recebida pelo servidor
 def on_message(client, userdata, msg):
-    return msg.payload
+    print(msg.payload)
     
-def receive_message(topic, payload):
+def receive_message(topic):
     # Dados do cliente
     client = mqtt.Client()
     client.on_connect = on_connect
@@ -18,7 +18,6 @@ def receive_message(topic, payload):
 
     client.connect("localhost", 1883, 60)
 
-    client.subscribe(topic)
-
+    client.subscribe(topic, qos=1)
     
-    #client.loop_forever()
+    client.loop_forever()
