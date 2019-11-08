@@ -29,8 +29,6 @@ def set_angle(angle):
     duty = deg_0_duty + (angle/180.0)* duty_range
     pwm.ChangeDutyCycle(round(duty,3))
         
-def loop_feed():
-    payload = mqtt.receive_message("teste/feed")
     if (payload == 0):
         # set_angle(47)
         print("angulo de 47")

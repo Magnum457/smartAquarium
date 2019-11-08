@@ -12,11 +12,12 @@ def on_message(client, userdata, msg):
 def send_message(topic, payload):
     # Dados do cliente
     client = mqtt.Client()
+    client.username_pw_set("test", "test")
     client.on_connect = on_connect
     client.on_message = on_message
 
 
-    client.connect("localhost", 1883, 60)
+    client.connect(172.31.22.58, 1883, 60)
 
     client.publish(topic, payload)
 
