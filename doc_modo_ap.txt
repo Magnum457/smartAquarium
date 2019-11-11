@@ -1,0 +1,23 @@
+PROQ SOLUÇÃO (Configuração do Wi-fi)
+
+1. Descrição: Como dou ao usuario a habilidade de setar as credenciais do Wi-fiem seu novo device-Pi? Existem diversas maneiras que eu pensei para resolver isso, e algumas precisaram de muita investigação que outras.
+
+2. Configurando como AP até a sua configuração:
+	Nesse cenário, quando a Rasp iniciar, ele irá procurar um conexão Wi-fi que possa se conectar; Se não existir, ela se torna em um AP usando uma rede ad hock. O usuario deve então se conectar com essa rede, abrir seu navegador para o IP local (192.168.0.1 por exemplo), e entrar em uma página que ele possa definir suas credenciais de Wi-fi.
+
+3. Connectando com Wi-fi ou criando uma rede DNS encriptada ad hoc como FallBack.
+	Para alcançar nossos passos, seguriremos 7 passos:
+	1. Recuperando a Interface Wifi e o endereço do Hardware.
+	2. Conectando com o Wifi.
+	3. Instalando e configurando o Servidor DHCP.
+	4. Atualizando o arquivo config de interfaces.
+	5. RPi rede Conf Bootstrapper.
+	6. Prevenindo DHCP começar no boot.
+	7. Reiniciando e testando.
+Então a ideia principal é que usamos o wpa_supplicant para manter a conexão Wifi, e nós usamos uma rede ad-hoc como fallback se não conseguirmos conectar o Wifi no boot. Além disso, para fazer um modo mais fácil de conectar e comunicar com o RPi via ad-hoc, nós setamos um servidor DHCP para a rede também.
+
+1-  Obtendo a conexão de iternet
+	Utilizamos o comando: ifconfig
+	O padrão wifi é wlan0
+2- Conectando-se com o wi-fi
+

@@ -4,3 +4,4 @@ import feed
 import time
 
 feed_thread = Thread(target = feed.loop_feed)
+feed_thread.start()
